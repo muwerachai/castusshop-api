@@ -1,3 +1,4 @@
+
 exports.ADMIN_ROLE = {
     SUPER_ADMIN: 'SUPER_ADMIN',
     PRODUCT_ADMIN: 'PRODUCT_ADMIN',
@@ -27,6 +28,5 @@ exports.ADMIN_ROLE = {
     CLIENT: 'CLIENT',
     SUPPLIER: 'SUPPLIER',
   };
-  
 
   
