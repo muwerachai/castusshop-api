@@ -9,8 +9,9 @@ const morgan = require('morgan');
 ;
 const notFound = require('./middlewares/notFound');
 const error = require('./middlewares/error');
-const adminRouter = require('./routes/admin/adminAuthRoutes');
-const clientRouter = require('./routes/client/clientAuthRoutes');
+const clientRouter = require('./routes/clientRoutes');
+const adminRouter = require('./routes/adminRoutes');
+const supplierRouter = require('./routes/supplierRoutes');
 
 
 
@@ -26,8 +27,9 @@ app.use(express.urlencoded({ extended: false}));
 
 
 
-app.use('/admin', adminRouter);
 app.use('/client', clientRouter);
+app.use('/supplier', supplierRouter);
+app.use('/admin', adminRouter);
 
 
 app.use(notFound);
