@@ -35,3 +35,30 @@ exports.adminRegister = async (req, res, next) => {
     next(err);
   }
 };
+
+
+exports.adminLogIn = async (req, res, next) => {
+  try {
+    const { employeeId, password } = req.body;
+    const admin = await Admin.findOne({
+      where: { employeeId },
+    });
+
+    if (!admin) {
+      createError('Invalid credential', 400);
+    }
+
+    const isMatch = await bcryptjs.compare(password, admin.password);
+    if (!isMatch) {
+      createError('Invalid credential', 400);
+    }
+
+    const token = genToken({ adminId: admin.id, role: admin.role });
+    res.json({
+      message: 'Admin signed in successfully',
+      token,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
